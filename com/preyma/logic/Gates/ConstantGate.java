@@ -16,8 +16,9 @@ public class ConstantGate extends Component {
         getOutput(0).output( s, 1 );
     }
 
-    public void set( boolean b ) {
+    public void set( boolean b ) throws OscillationError {
         getOutput().output( b ? State.High : State.Low, 1 );
+        m_scheduler.stabilize();
     }
 
     public void set( byte s ) throws OscillationError {
